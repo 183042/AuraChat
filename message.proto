@@ -1,0 +1,64 @@
+syntax = "proto3";
+package my_chat;
+
+message ChatMessage {
+    int32 from_uid = 1;
+    int32 to_uid = 2;
+    bytes content = 3;
+    int64 timestamp = 4;
+    bool is_stream = 5;      // 是否为流式消息（AI回复）
+    bool is_last_chunk = 6;  // 是否为流式消息的最后一个块
+    int32 stream_seq = 7;    // 流式消息序列号，用于排序
+}
+
+message Response {
+    bool success = 1;
+    string msg = 2;
+    int32 uid = 3;
+}
+
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message RegisterRequest {
+    string username = 1;
+    string password = 2;
+}
+
+// ========== 好友系统 ==========
+
+message FriendInfo {
+    int32 uid = 1;
+    string username = 2;
+    bool online = 3;
+}
+
+message AddFriendRequest {
+    int32 to_uid = 1;
+    string message = 2;
+}
+
+message AcceptFriendRequest {
+    int32 request_id = 1;
+}
+
+message FriendRequestInfo {
+    int32 id = 1;
+    int32 from_uid = 2;
+    string from_username = 3;
+    string message = 4;
+}
+
+message SearchUserRequest {
+    string keyword = 1;
+}
+
+message UserList {
+    repeated FriendInfo users = 1;
+}
+
+message FriendRequestList {
+    repeated FriendRequestInfo requests = 1;
+}

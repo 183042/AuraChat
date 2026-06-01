@@ -1,0 +1,24 @@
+# 构建目录
+build/
+cmake-build-debug/
+cmake-build-release/
+
+# 编译产物
+*.o
+*.so
+*.a
+*.exe
+im_server
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 数据文件
+data/
+
+# 系统文件
+.DS_Store
+Thumbs.db
